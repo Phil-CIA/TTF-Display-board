@@ -11,11 +11,13 @@ Tracks all hardware changes from Rev 0 (ESP32-C6, Development-Station-Power-Supp
 
 ## Hardware Changes
 
-### HW-001 — Replace ESP32-C6 with ESP32-S3
-**Status:** 🔴 Open  
+### HW-001 — Replace ESP32-C6 with ESP32-S3-N16R8
+**Status:** 🟡 In Progress  
 **Priority:** Critical  
-**Reason:** ESP32-C6-WROOM-1-N4 has no PSRAM. LVGL requires ~300KB frame buffer for 480×320 16-bit color — beyond C6 SRAM headroom. ESP32-S3-WROOM-1-N8R8 provides 8MB PSRAM.  
-**Action:** Replace `ESP32-C6-WROOM-1-N4` symbol and footprint with `ESP32-S3-WROOM-1-N8R8`. Update all GPIO assignments.
+**Reason:** ESP32-C6-WROOM-1-N4 has no PSRAM. LVGL requires ~300KB frame buffer for 480×320 16-bit color — beyond C6 SRAM headroom. ESP32-S3-N16R8 provides 8MB PSRAM and 16MB flash.  
+**Decision (2026-04-14):** Upgraded target from N8R8 → **N16R8** (16MB flash, 8MB PSRAM). Dev board ordered: Hosyond 3-pack ~$6.33/each, arriving ~2026-04-17.  
+**Note:** C6 board remains in service in the power supply project. Static instrument screens work fine on C6 with reduced LVGL draw buffer.  
+**Action:** Replace `ESP32-C6-WROOM-1-N4` symbol and footprint with `ESP32-S3-WROOM-1-N16R8` in next-iter schematic. Verify GPIO assignments against Hosyond devkit silk labels on arrival.
 
 ---
 

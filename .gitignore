@@ -1,0 +1,26 @@
+# KiCad
+*.kicad_pcb-bak
+*.kicad_sch-bak
+*.kicad_prl
+_autosave*
+*.lck
+fp-info-cache
+
+# PlatformIO
+.pio/
+.pioenvs/
+.piolibdeps/
+*.pyc
+__pycache__/
+
+# VS Code
+.vscode/
+!.vscode/extensions.json
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Backups
+*-backups/

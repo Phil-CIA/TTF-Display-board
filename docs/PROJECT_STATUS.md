@@ -1,14 +1,22 @@
 # Project Status
 
 ## Summary
-Standalone ESP32-S3 display co-processor board with LVGL and multi-protocol command interface. Separated from the Development-Station-Power-Supply project to allow independent hardware and firmware iteration.
+Reference-only record of the standalone ESP32 display-board exploration. Active front-panel work has now moved back into the Development-Station-Power-Supply project.
 
-## Current State (2026-04-14)
+## Current State (2026-04-15)
+
+### Direction Change
+- The separate standalone redesign is **paused / on hold**
+- No immediate custom display-board redesign is planned
+- The display effort has pivoted back into the main power-supply repo
+- Two active paths remain:
+  1. Bring up the existing custom front-panel board already built
+  2. Evaluate the Elecrow CrowPanel Advance 4.3 inch HMI board as a faster off-the-shelf UI option
 
 ### Origin
 - Derived from the `front-display-board` in the Development-Station-Power-Supply repo
 - Original board used an ESP32-C6-WROOM-1-N4 and drove the TFT directly via SPI
-- Architecture revised to co-processor model: host sends commands, ESP32-S3 owns all rendering
+- This repo captured the earlier idea of a separate display co-processor board
 
 ### Hardware — Decisions Made
 - **Rev 0 (archived):** ESP32-C6-WROOM-1-N4, no PSRAM, 10-pin IDC carrying raw TFT SPI signals
@@ -38,17 +46,12 @@ For "phone quality feel" the full chain must be addressed in order:
 - Without PSRAM (C6): 1/10 frame buffer (~15KB) works for static instrument screens
 
 ## Immediate Next Priorities
-1. ✅ Archive Rev 0 KiCad files
-2. ✅ Create next-iter KiCad working folder
-3. ✅ Order ESP32-S3-N16R8 dev board
-4. Get LVGL + ST7796S driver running on S3 devkit with the existing 4" TFT (Phase 1)
-5. Implement UART command parser — label and bar updates from serial (Phase 2)
-6. Add WiFi TCP command server (Phase 3)
-7. Add SPI slave command receiver (Phase 4)
-8. Begin next-iter schematic: swap C6 → S3-N16R8, repurpose IDC, add USB-C
+1. Bring up the existing front-panel hardware in the main power-supply project
+2. Bench-test the Elecrow CrowPanel Advance 4.3 inch board when it arrives
+3. Define a simple common host-to-display interface, likely 5V + GND + UART TX/RX
+4. Keep this repo only as design reference unless a future redesign becomes justified by testing
 
 ## Open Questions
-- Final IDC pinout — SPI slave only, or SPI + UART on same connector?
-- Touch events: handle locally on display ESP32, or forward to host?
-- Panel upgrade timing — IPS + capacitive once GUI is proven?
-- MCU not limited to ESP32 long-term — revisit when phone-quality animation is targeted
+- Which path proves most practical on the bench: existing custom board or Elecrow board?
+- What minimal command set should the host expose so either display can be used?
+- Is any future custom redesign still needed after real bring-up data is collected?

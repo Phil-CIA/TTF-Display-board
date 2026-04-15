@@ -1,10 +1,19 @@
 # TTF Display Board
 
-ESP32-S3 co-processor display module with LVGL and a multi-protocol command interface.
+Reference-only concept repo for the earlier standalone display-board exploration.
 
-## Concept
+## Status
 
-This board offloads all display rendering from the host MCU. The host sends simple text commands over SPI, UART, or WiFi. The display ESP32 owns all LVGL layout, animation, and widget management — the host never deals with pixels.
+This repo is currently **on hold**.
+
+The active front-panel display work has moved back into the main Development Station Power Supply project. The current plan is:
+- bring up the existing custom front-panel hardware already built
+- evaluate an Elecrow CrowPanel Advance 4.3 inch HMI board as an off-the-shelf option
+- avoid any new custom display redesign until there is bench evidence that it is needed
+
+## Original concept
+
+This repo explored an ESP32-S3 co-processor display module with LVGL and a multi-protocol command interface. That architectural idea is still useful as reference, but it is not the active hardware path right now.
 
 ```
 HOST MCU or PC

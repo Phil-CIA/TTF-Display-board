@@ -10,6 +10,8 @@ All notable changes to this project will be documented here.
 - `docs/ARCHITECTURE.md` — command protocol and system design reference
 - `docs/REV1_CHANGE_TRACKER.md` — tracked hardware changes from Rev 0 (C6) to next-iter (S3)
 - `docs/LVGL_NOTES.md` — LVGL learning notes and implementation reference
+- `docs/HOSYOND_MSP4022_DISPLAY_ISSUES.md` — working notes on Hosyond 4 inch TFT bring-up risk and controller ambiguity
+- `docs/DISPLAY_SIGNAL_VERIFICATION_WORKSHEET.md` — code-versus-schematic verification worksheet for the PCB-mounted display path
 - `hardware/kicad/front-display-board-rev0-archive/` — original ESP32-C6 board files archived from Development-Station-Power-Supply repo
 - `hardware/kicad/front-display-board-next-iter/` — working copy for S3-based redesign
 - `firmware/` — PlatformIO project skeleton (ESP32-S3 target, PSRAM enabled)

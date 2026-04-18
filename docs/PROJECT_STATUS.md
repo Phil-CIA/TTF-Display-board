@@ -39,6 +39,7 @@ For "phone quality feel" the full chain must be addressed in order:
 ### Firmware
 - PlatformIO skeleton created — `firmware/src/main.cpp` Phase 1 boot + PSRAM check ready
 - Target board: `esp32-s3-devkitc-1` (verify GPIO silk labels on Hosyond board on arrival)
+- Reference bring-up docs now include a Hosyond display issues note and a signal-verification worksheet for checking PCB labels against firmware pin assignments
 
 ### Software / LVGL
 - LVGL selected as graphics engine — learning phase in progress

@@ -2,6 +2,8 @@
 
 Board documentation bundle for the Elecrow CrowPanel Advance 4.3 inch HMI (Amazon listing B0G3WCDFLD), maintained as a bench-first integration reference.
 
+Confirmed working assumption for this pack: board revision v1.1.
+
 ## Purpose
 - Centralize official references for the board in one place.
 - Provide a safe bring-up path when board revision is unknown.
@@ -11,6 +13,7 @@ Board documentation bundle for the Elecrow CrowPanel Advance 4.3 inch HMI (Amazo
 1. Read `source-index/RESOURCE_INDEX.md` for official source links and provenance.
 2. Read `ELECROW_CROWPANEL_43_CONNECTION_STRATEGY.md` for wiring and integration approach.
 3. Run `ELECROW_CROWPANEL_43_FIRST_POWERUP.md` on first bench power-up.
+4. Use USB for firmware loading and serial debug during setup; use the v1.1 external host interface only after standalone bring-up is stable.
 
 ## Folder Layout
 - `source-index/` - URL registry and what is mirrored vs external.

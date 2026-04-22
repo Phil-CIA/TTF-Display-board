@@ -3,8 +3,8 @@
 This folder is for locally mirrored datasheets used by the active integration path.
 
 ## Current State
-- No mirrored binaries committed yet.
-- Use `../source-index/RESOURCE_INDEX.md` for authoritative external sources.
+- Mirrored files now include `esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf`.
+- Use `../source-index/RESOURCE_INDEX.md` for provenance and checksums.
 
 ## Intended Contents
 - ESP32-S3 module datasheet (exact module variant once confirmed on physical board).
@@ -25,7 +25,10 @@ Only mirror files that are directly relevant to active integration/debug tasks.
 
 | Component class | Expected source | Mirror now | Gate |
 |---|---|---|---|
-| MCU module (ESP32-S3-WROOM-1 family) | Espressif | Yes | Exact module variant must be verified on hardware |
+| MCU module (ESP32-S3-WROOM-1 family) | Espressif | Yes | Mirrored for current v1.1 work; N16R8 module class called out by vendor docs |
 | Touch controller | Vendor board docs + controller vendor | Not yet | Controller identity must be confirmed per board revision |
 | LCD driver/controller | Vendor board docs + controller vendor | Not yet | Controller identity must be confirmed per board revision |
 | IO expander/backlight helper ICs | Vendor board docs + IC vendor | Not yet | Only mirror if used by active firmware/debug path |
+
+## Mirrored Files
+- `esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf` - official Espressif module datasheet PDF for the ESP32-S3-WROOM-1 / WROOM-1U family.

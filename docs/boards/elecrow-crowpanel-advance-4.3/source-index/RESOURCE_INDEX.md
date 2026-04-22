@@ -14,6 +14,7 @@ Hybrid artifact policy:
 | Elecrow wiki page | https://www.elecrow.com/wiki/CrowPanel_Advance_4.3-HMI_ESP32_AI_Display.html | Product docs | No | Primary source for specs, interfaces, revision notes |
 | Elecrow board repo | https://github.com/Elecrow-RD/CrowPanel-Advance-4.3--HMI-ESP32-800x480 | Vendor code/docs | No | Primary source for examples and board-specific firmware patterns |
 | Espressif module docs | https://www.espressif.com/en/products/modules/esp32-s3-wroom-1 | MCU module reference | No | Module family used by board line |
+| Espressif module datasheet PDF | https://www.espressif.com/sites/default/files/documentation/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf | Datasheet PDF | Yes | Mirrored locally as `../datasheets/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf` |
 | CrowPanel code library (Drive) | https://drive.google.com/drive/folders/1npWkVzctd7e0Y6H5hahk8uxGhy9idxCz?usp=sharing | External bundle | No | Vendor-hosted assets; mirror selectively if required |
 | CrowPanel wireless bundle (Drive) | https://drive.google.com/drive/folders/1DWLBHqny0IwR9hPPtEwjRyMHmVubhqIj?usp=sharing | External bundle | No | Optional expansion module references |
 
@@ -29,10 +30,11 @@ Hybrid artifact policy:
 
 ## Technical Facts Pulled For Bring-Up
 - Display resolution: 800x480.
-- Main module class: ESP32-S3-WROOM-1 variant.
+- Main module class: ESP32-S3-WROOM-1-N16R8.
 - External power target: 5V (wiki indicates 5V/2A class external supply).
 - Touch path appears I2C on vendor materials; common address notes include 0x5D (some refs also mention 0x14).
-- Board has documented version deltas (v1.0/v1.1/v1.2 family notes in vendor material); do not assume one fixed pin map until revision is identified.
+- Board revision for current work: v1.1.
+- v1.1 external host candidates from vendor docs: UART0 on IO44/IO43, UART1 on IO19/IO20, I2C on IO15/IO16.
 
 ## Mirroring Backlog
 - Add local PDF mirrors for core silicon/component datasheets used by active firmware path.
@@ -40,6 +42,12 @@ Hybrid artifact policy:
 - Add checksums for any mirrored binaries once mirrored files are introduced.
 
 ## Next Artifact Intake Targets
-1. Mirror exact ESP32-S3-WROOM-1 module datasheet PDF for the module variant physically observed on the board.
-2. Mirror touch controller datasheet only after controller identity is confirmed from board revision and firmware config.
-3. Capture a board-revision evidence set in `../images/` before pin-map-specific notes are treated as authoritative.
+1. Mirror touch controller datasheet only after controller identity is confirmed from board revision and firmware config.
+2. Capture a board-revision evidence set in `../images/` before pin-map-specific notes are treated as authoritative.
+3. Mirror any control-helper IC datasheets only if they enter the active firmware/debug path.
+
+## Mirrored Artifact Record
+
+| File | Source URL | Retrieved | SHA256 |
+|---|---|---|---|
+| `../datasheets/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf` | https://www.espressif.com/sites/default/files/documentation/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf | 2026-04-22 | `27D71971DA07C280C6068D08C74720D1A25B8F20CF8494DC1765BDD28D40D435` |

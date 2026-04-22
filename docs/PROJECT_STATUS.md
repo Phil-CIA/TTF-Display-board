@@ -41,6 +41,12 @@ For "phone quality feel" the full chain must be addressed in order:
 - Target board: `esp32-s3-devkitc-1` (verify GPIO silk labels on Hosyond board on arrival)
 - Reference bring-up docs now include a Hosyond display issues note and a signal-verification worksheet for checking PCB labels against firmware pin assignments
 
+### Elecrow Documentation Track (2026-04-22)
+- Added a dedicated Elecrow board documentation bundle under `docs/boards/elecrow-crowpanel-advance-4.3/`
+- Added source provenance index for official Elecrow wiki/repo links and integration facts
+- Added a connection strategy that treats CrowPanel as a self-hosted HMI node linked to host via UART-first protocol
+- Added a first power-up checklist with revision-identification gate before fixed pin assumptions
+
 ### Software / LVGL
 - LVGL selected as graphics engine — learning phase in progress
 - With 8MB PSRAM: full 300KB frame buffer easily allocated, no compromise needed
@@ -48,11 +54,18 @@ For "phone quality feel" the full chain must be addressed in order:
 
 ## Immediate Next Priorities
 1. Bring up the existing front-panel hardware in the main power-supply project
-2. Bench-test the Elecrow CrowPanel Advance 4.3 inch board when it arrives
-3. Define a simple common host-to-display interface, likely 5V + GND + UART TX/RX
-4. Keep this repo only as design reference unless a future redesign becomes justified by testing
+2. Execute the Elecrow first power-up checklist and capture board revision photos in `docs/boards/elecrow-crowpanel-advance-4.3/images/`
+3. Bench-test the Elecrow CrowPanel Advance 4.3 inch board with USB-only bring-up first, then UART host link
+4. Define and validate a simple common host-to-display interface, likely 5V + GND + UART TX/RX
+5. Keep this repo only as design reference unless a future redesign becomes justified by testing
 
 ## Open Questions
 - Which path proves most practical on the bench: existing custom board or Elecrow board?
 - What minimal command set should the host expose so either display can be used?
 - Is any future custom redesign still needed after real bring-up data is collected?
+
+## New Reference Docs
+- `docs/boards/elecrow-crowpanel-advance-4.3/README.md`
+- `docs/boards/elecrow-crowpanel-advance-4.3/source-index/RESOURCE_INDEX.md`
+- `docs/boards/elecrow-crowpanel-advance-4.3/ELECROW_CROWPANEL_43_CONNECTION_STRATEGY.md`
+- `docs/boards/elecrow-crowpanel-advance-4.3/ELECROW_CROWPANEL_43_FIRST_POWERUP.md`

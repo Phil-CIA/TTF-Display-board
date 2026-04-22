@@ -11,6 +11,9 @@ The active front-panel display work has moved back into the main Development Sta
 - evaluate an Elecrow CrowPanel Advance 4.3 inch HMI board as an off-the-shelf option
 - avoid any new custom display redesign until there is bench evidence that it is needed
 
+Elecrow board reference bundle:
+- `docs/boards/elecrow-crowpanel-advance-4.3/README.md`
+
 ## Original concept
 
 This repo explored an ESP32-S3 co-processor display module with LVGL and a multi-protocol command interface. That architectural idea is still useful as reference, but it is not the active hardware path right now.
@@ -52,6 +55,8 @@ HOST MCU or PC
 ```
 TTF-Display-board/
 ├── docs/                        # Design docs, planning, change tracker
+│   └── boards/
+│       └── elecrow-crowpanel-advance-4.3/  # Board-specific source index and bring-up guides
 ├── firmware/
 │   ├── src/                     # PlatformIO source files
 │   └── include/                 # Headers

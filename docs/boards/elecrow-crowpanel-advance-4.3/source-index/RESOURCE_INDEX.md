@@ -17,6 +17,16 @@ Hybrid artifact policy:
 | CrowPanel code library (Drive) | https://drive.google.com/drive/folders/1npWkVzctd7e0Y6H5hahk8uxGhy9idxCz?usp=sharing | External bundle | No | Vendor-hosted assets; mirror selectively if required |
 | CrowPanel wireless bundle (Drive) | https://drive.google.com/drive/folders/1DWLBHqny0IwR9hPPtEwjRyMHmVubhqIj?usp=sharing | External bundle | No | Optional expansion module references |
 
+## Link Validation Snapshot (2026-04-22)
+
+| URL | Status | Notes |
+|---|---|---|
+| https://www.elecrow.com/wiki/CrowPanel_Advance_4.3-HMI_ESP32_AI_Display.html | 200 | Primary board documentation page reachable |
+| https://github.com/Elecrow-RD/CrowPanel-Advance-4.3--HMI-ESP32-800x480 | 200 (redirect) | Redirects to `CrowPanel-Advance-4.3-HMI-ESP32-S3-AI-Powered-IPS-Touch-Screen-800x480` |
+| https://www.espressif.com/en/products/modules/esp32-s3-wroom-1 | 200 | ESP32-S3 module family page reachable |
+| https://drive.google.com/drive/folders/1npWkVzctd7e0Y6H5hahk8uxGhy9idxCz?usp=sharing | 200 | Vendor code library folder reachable |
+| https://drive.google.com/drive/folders/1DWLBHqny0IwR9hPPtEwjRyMHmVubhqIj?usp=sharing | 200 | Vendor wireless folder reachable |
+
 ## Technical Facts Pulled For Bring-Up
 - Display resolution: 800x480.
 - Main module class: ESP32-S3-WROOM-1 variant.
@@ -28,3 +38,8 @@ Hybrid artifact policy:
 - Add local PDF mirrors for core silicon/component datasheets used by active firmware path.
 - Add board photos in `../images/` that identify revision markers and connector orientation.
 - Add checksums for any mirrored binaries once mirrored files are introduced.
+
+## Next Artifact Intake Targets
+1. Mirror exact ESP32-S3-WROOM-1 module datasheet PDF for the module variant physically observed on the board.
+2. Mirror touch controller datasheet only after controller identity is confirmed from board revision and firmware config.
+3. Capture a board-revision evidence set in `../images/` before pin-map-specific notes are treated as authoritative.

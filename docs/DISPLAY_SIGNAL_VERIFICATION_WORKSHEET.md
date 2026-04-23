@@ -1,7 +1,8 @@
 # Display Signal Verification Worksheet
 
-**Status:** Active bench worksheet  
+**Status:** Active bench worksheet — custom PCB path only  
 **Last Updated:** 2026-04-18  
+**Scope:** This worksheet is for the **Hosyond MSP4022 / custom display PCB** bring-up path only. It does **not** apply to the Elecrow CrowPanel Advance 4.3, which is a self-contained HMI board with its own integrated LCD and touch wiring.  
 **Purpose:** Verify that the TFT-related firmware signal definitions still match the actual PCB schematic labels and net mapping for the permanently attached display assembly.
 
 ---

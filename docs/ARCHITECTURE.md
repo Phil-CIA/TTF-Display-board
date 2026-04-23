@@ -1,5 +1,7 @@
 # Architecture Reference
 
+> **Status: On Hold** — This document describes the original custom co-processor board concept. The active evaluation path has shifted to the Elecrow CrowPanel Advance 4.3 as an off-the-shelf HMI. See `docs/boards/elecrow-crowpanel-advance-4.3/` for the current integration approach.
+
 ## System Concept
 
 The TTF Display Board is a display co-processor. The host MCU or PC sends commands over a wire or wireless protocol. The display ESP32-S3 owns all LVGL layout, rendering, and animation. The host never deals with pixels, fonts, or display timing.

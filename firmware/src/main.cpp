@@ -1,7 +1,7 @@
 #include <Arduino.h>
 
 // TTF Display Board — Phase 1 skeleton
-// Target: ESP32-S3-WROOM-1-N8R8
+// Target: ESP32-S3-WROOM-1-N16R8
 // Goal: confirm boot, serial output, PSRAM detection
 
 void setup() {

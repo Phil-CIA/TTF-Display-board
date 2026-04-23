@@ -90,3 +90,32 @@ New doc: `docs/boards/elecrow-crowpanel-advance-4.3/ELECROW_CROWPANEL_43_UART_PR
 - Rail ID canonical tokens confirmed against DSPS firmware parser
 - PSU integration approach: `CMD:` prefix check added at top of `handleSerialCommands()`, dispatches to new `handleHmiCommand()` — existing raw commands unchanged
 - CrowPanel integration: uart_rx_task + uart_poll_task skeleton documented
+
+### HMI Firmware Scaffold Complete (2026-04-23)
+
+Repo: `TTF-Display-board/firmware/` (commit `03a500d`)
+
+- **platformio.ini**: Updated for ESP32-S3 OPI PSRAM, LVGL 9.2 + LovyanGFX, -DDISPLAY_WIDTH=800 -DDISPLAY_HEIGHT=480
+- **include/hmi_state.h**: HmiState (SafeIdle/Standby/ActiveRun/FaultLock), ScreenId, RailStatus structs, PendingCommand model
+- **include/uart_link.h**: Async UART API (uart_rx_task, uart_poll_task, callback registration)
+- **include/lv_conf.h**: LVGL 800×480 config with PSRAM OPI allocator, dark theme colors
+- **include/screen_manager.h**: 5-screen manager declarations
+- **src/main.cpp**: setup() integrates LVGL + UART + FreeRTOS tasks; loop() diagnostics heartbeat
+- **src/uart_link.cpp**: uart_rx_task (core 0) parses ACK:/ERR:/EVT:, uart_poll_task (core 1) sends READ_STATUS every 500ms + 1500ms watchdog
+- **src/screen_manager.cpp**: 5-screen skeleton (Dashboard, RailDetail, FaultLock, TrendView, ServiceMenu) with placeholder layouts
+
+Status: Compiles cleanly (first LVGL build ~30s).
+TODO: SquareLine studio integration for display driver + touch input, chart widget, button handlers
+
+### Phased Bring-Up Plan (2026-04-23)
+
+Docs: `BRING_UP_PLAN.md` in elecrow-crowpanel-advance-4.3 folder
+
+- **Phase A**: UART loopback (PSU debug terminal, CMD: echo)
+- **Phase B**: CrowPanel boot + link establish (periodic READ_STATUS polling)
+- **Phase C**: Single rail enable + telemetry stream (voltage/current feedback)
+- **Phase D**: Full dashboard with display + touch (multi-rail control, no lag)
+- **Phase E**: Fault injection + recovery (Fault Lock screen, RESET hold)
+- **Phase F**: Trend view + service menu (chart widget, diagnostics)
+
+Includes setup, test sequences, success criteria, failure modes, debug procedures per phase.

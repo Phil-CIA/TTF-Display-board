@@ -47,6 +47,13 @@ For "phone quality feel" the full chain must be addressed in order:
 - Added a connection strategy that treats CrowPanel as a self-hosted HMI node linked to host via UART-first protocol
 - Added a first power-up checklist with revision-identification gate before fixed pin assumptions
 
+### HMI Docs Aligned to DSPS Channel Model (2026-04-23)
+- Added `ELECROW_CROWPANEL_43_CHANNEL_CAPABILITY_PROFILE.md` as canonical UI capability source, derived from Development-Station-Power-Supply `src/main.cpp` and `HANDOFF.md`
+- Rail model confirmed: Rail5V (fixed 5V), Rail3V3 (fixed 3.3V), RailAdj (discrete relay 5V/3.3V select), RailIncoming12V (monitor only)
+- Added `ELECROW_CROWPANEL_43_OPERATIONS_CONTRACT.md` with state machine, UART commands, and relay-safe interlock rule for RailAdj
+- Added `ELECROW_CROWPANEL_43_SCREEN_MAP.md` with 5-screen layout; no analog sliders; RailAdj uses 2-position selector grayed when rail is on
+- Verified no variable-setpoint wording exists in any Elecrow doc; all setpoint-related lines are explicit prohibitions
+
 ### Software / LVGL
 - LVGL selected as graphics engine — learning phase in progress
 - With 8MB PSRAM: full 300KB frame buffer easily allocated, no compromise needed
@@ -69,3 +76,6 @@ For "phone quality feel" the full chain must be addressed in order:
 - `docs/boards/elecrow-crowpanel-advance-4.3/source-index/RESOURCE_INDEX.md`
 - `docs/boards/elecrow-crowpanel-advance-4.3/ELECROW_CROWPANEL_43_CONNECTION_STRATEGY.md`
 - `docs/boards/elecrow-crowpanel-advance-4.3/ELECROW_CROWPANEL_43_FIRST_POWERUP.md`
+- `docs/boards/elecrow-crowpanel-advance-4.3/ELECROW_CROWPANEL_43_CHANNEL_CAPABILITY_PROFILE.md`
+- `docs/boards/elecrow-crowpanel-advance-4.3/ELECROW_CROWPANEL_43_OPERATIONS_CONTRACT.md`
+- `docs/boards/elecrow-crowpanel-advance-4.3/ELECROW_CROWPANEL_43_SCREEN_MAP.md`

@@ -79,3 +79,14 @@ For "phone quality feel" the full chain must be addressed in order:
 - `docs/boards/elecrow-crowpanel-advance-4.3/ELECROW_CROWPANEL_43_CHANNEL_CAPABILITY_PROFILE.md`
 - `docs/boards/elecrow-crowpanel-advance-4.3/ELECROW_CROWPANEL_43_OPERATIONS_CONTRACT.md`
 - `docs/boards/elecrow-crowpanel-advance-4.3/ELECROW_CROWPANEL_43_SCREEN_MAP.md`
+
+### UART Protocol Formal Spec Added (2026-04-23)
+
+New doc: `docs/boards/elecrow-crowpanel-advance-4.3/ELECROW_CROWPANEL_43_UART_PROTOCOL.md`
+
+- Frame format: `CMD:<ACTION> key=value …\r\n` / `ACK:` / `ERR:` / `EVT:`
+- Commands: READ_STATUS, RAIL_ENABLE, RAIL_VOLT_SEL, SET_MODE, RESET, ABORT
+- Unsolicited events: EVT:FAULT, EVT:WATCHDOG
+- Rail ID canonical tokens confirmed against DSPS firmware parser
+- PSU integration approach: `CMD:` prefix check added at top of `handleSerialCommands()`, dispatches to new `handleHmiCommand()` — existing raw commands unchanged
+- CrowPanel integration: uart_rx_task + uart_poll_task skeleton documented

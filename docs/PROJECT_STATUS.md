@@ -1,23 +1,28 @@
 # Project Status
 
+
 ## Summary
-Reference-only record of the standalone ESP32 display-board exploration. Active front-panel work has now moved back into the Development-Station-Power-Supply project.
+Developing a UART-linked HMI display interface for the [Development-Station-Power-Supply](https://github.com/Phil-CIA/Development-Station-Power-Supply) PSU. Two board paths are active: (1) Elecrow CrowPanel 4.3" (primary development), (2) custom front-display-board-rev0 archived variant (parallel/conversion consideration).
 
-## Current State (2026-04-15)
+## Current State (2026-04-23)
 
-### Direction Change
-- The separate standalone redesign is **paused / on hold**
-- No immediate custom display-board redesign is planned
-- The display effort has pivoted back into the main power-supply repo
-- Two active paths remain:
-  1. Bring up the existing custom front-panel board already built
-  2. Evaluate the Elecrow CrowPanel Advance 4.3 inch HMI board as a faster off-the-shelf UI option
+### Status: CrowPanel Path Complete & Ready for Bring-Up
+- ✅ UART protocol formal spec (CMD:/ACK:/ERR:/EVT: frame format, 6 commands)
+- ✅ PSU firmware stubs (`handleHmiCommand()` in Development-Station-Power-Supply commit `900541a`)
+- ✅ CrowPanel firmware scaffold (LVGL 9.2, FreeRTOS UART tasks, 5-screen manager, commit `03a500d`)
+- ✅ Phased bring-up plan (6 phases: loopback → fault recovery)
+- **Next:** SquareLine studio for display driver + touch integration, Phase A bench validation
 
+### Two Development Paths
+1. **Elecrow CrowPanel Advance 4.3** (ACTIVE) — off-the-shelf 800×480 HMI, UART-linked
+2. **front-display-board-rev0** (ARCHIVED VARIANT) — custom ESP32 board, still valid for parallel effort or conversion
 ### Origin
-- Derived from the `front-display-board` in the Development-Station-Power-Supply repo
-- Original board used an ESP32-C6-WROOM-1-N4 and drove the TFT directly via SPI
-- This repo captured the earlier idea of a separate display co-processor board
 
+### Project Origins
+- **Primary repo:** Development-Station-Power-Supply (PSU board/firmware) — [https://github.com/Phil-CIA/Development-Station-Power-Supply](https://github.com/Phil-CIA/Development-Station-Power-Supply)
+- **This repo (TTF-Display-board):** Dedicated HMI display development for the PSU
+- **Path 1 origin:** Elecrow CrowPanel Advance 4.3 — purchased as off-the-shelf HMI option, being integrated via UART
+- **Path 2 origin:** front-display-board-rev0 (archived in `hardware/kicad/`) — custom ESP32-C6 board from earlier exploration, archived but still valid variant
 ### Hardware — Decisions Made
 - **Rev 0 (archived):** ESP32-C6-WROOM-1-N4, no PSRAM, 10-pin IDC carrying raw TFT SPI signals
   - C6 board will **remain in service** in the power supply project (static screens, sufficient)
@@ -60,17 +65,19 @@ For "phone quality feel" the full chain must be addressed in order:
 - Without PSRAM (C6): 1/10 frame buffer (~15KB) works for static instrument screens
 
 ## Immediate Next Priorities
-1. Bring up the existing front-panel hardware in the main power-supply project
-2. Execute the Elecrow first power-up checklist and capture board revision photos in `docs/boards/elecrow-crowpanel-advance-4.3/images/`
-3. Bench-test the Elecrow CrowPanel Advance 4.3 inch board with USB-only bring-up first, then UART host link
-4. Define and validate a simple common host-to-display interface, likely 5V + GND + UART TX/RX
-5. Keep this repo only as design reference unless a future redesign becomes justified by testing
 
+1. **SquareLine studio integration** — generate display driver code for ST7265 + capacitive touch
+2. **Phase A bench validation** — UART loopback test with PSU (cmd echo via debug terminal)
+3. **Phase B boot test** — CrowPanel firmware boots, establishes link to PSU, periodic polling
+4. **Phase C single-rail test** — end-to-end control: CMD:RAIL_ENABLE → voltage/current feedback
+5. **Phase D live dashboard** — display renders, multi-rail control, responsiveness validation
+6. **Phase E fault recovery** — fault injection, Fault Lock screen, recovery path
+7. **front-display-board-rev0 decision** — after CrowPanel bring-up, decide: parallel effort, conversion, or archive-only reference
 ## Open Questions
-- Which path proves most practical on the bench: existing custom board or Elecrow board?
-- What minimal command set should the host expose so either display can be used?
-- Is any future custom redesign still needed after real bring-up data is collected?
 
+- **Post bring-up:** After CrowPanel validates end-to-end, does front-display-board-rev0 get developed in parallel or converted to use CrowPanel design?
+- **Custom redesign:** Is future custom ESP32 display board needed, or is CrowPanel sufficient long-term?
+- **GPIO assignment:** Which ESP32 pins will be assigned for rail enable and RailAdj relay select on PSU side?
 ## New Reference Docs
 - `docs/boards/elecrow-crowpanel-advance-4.3/README.md`
 - `docs/boards/elecrow-crowpanel-advance-4.3/source-index/RESOURCE_INDEX.md`
